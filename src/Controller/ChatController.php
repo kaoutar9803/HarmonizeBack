@@ -42,7 +42,7 @@ class ChatController extends AbstractController
             return new JsonResponse(['answer' => $answer]);
         }
 
-        $apiKey = 'sk-proj-oRXTF56YiBH64R5zwuG3T3BlbkFJcCbGGp9yzvcOd4NuwBIK';
+        $apiKey = getenv('OPENAI_API_KEY');
 
         try {
             $response = $this->httpClient->request('POST', 'https://api.openai.com/v1/chat/completions', [
