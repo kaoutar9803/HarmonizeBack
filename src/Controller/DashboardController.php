@@ -110,7 +110,7 @@ class DashboardController extends AbstractController
         $qb = $this->entityManager->createQueryBuilder()
             ->select('s', 'o.type_objectif')
             ->from(Suivi::class, 's')
-            ->leftJoin('s.objectifs', 'o') // Assurez-vous que 'objectif' est le nom correct de la relation dans votre entité Suivi
+            ->leftJoin('s.objectifs', 'o')
             ->where('s.user = :user')
             ->setParameter('user', $user);
 
@@ -118,13 +118,13 @@ class DashboardController extends AbstractController
 
         $data = [];
         foreach ($result as $item) {
-            $suivi = $item[0]; // Suivi est l'élément principal du tuple résultant
-            $typeObjectif = $item['type_objectif']; // Le type d'objectif récupéré grâce à la jointure
+            $suivi = $item[0];
+            $typeObjectif = $item['type_objectif'];
 
             $data[] = [
                 'valeur_actuelle' => $suivi->getValeurActuelle(),
                 'date_suivi' => $suivi->getDateSuivi() instanceof \DateTimeInterface ? $suivi->getDateSuivi()->format('Y-m-d') : null,
-                'type_objectif' => $typeObjectif // Ajout du type d'objectif dans le résultat
+                'type_objectif' => $typeObjectif
             ];
         }
 
@@ -134,7 +134,7 @@ class DashboardController extends AbstractController
     #[Route('/profilForm', name: 'profil_form', methods: ['POST'])]
     public function updateObjectif(Request $request, Security $security, EntityManagerInterface $entityManager): Response
     {
-        $user = $security->getUser(); // Get the currently authenticated user
+        $user = $security->getUser();
         if (!$user) {
             return $this->json(['message' => 'Unauthorized'], Response::HTTP_UNAUTHORIZED);
         }

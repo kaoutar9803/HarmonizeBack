@@ -69,7 +69,7 @@ class LoginContrtollerController extends AbstractController
                     'nom' => $user->getNom(),
                     'prenom' => $user->getPrenom(),
                     'email' => $user->getEmail(),
-                    'age' => $user->getAge(),  // Assurez-vous que ces méthodes existent et retournent les valeurs attendues
+                    'age' => $user->getAge(),
                     'poids' => $user->getPoids(),
                     'taille' => $user->getTaille(),
                     'telephone' => $user->getTelephone()
