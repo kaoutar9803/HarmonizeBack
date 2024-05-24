@@ -189,13 +189,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->username;
     }
 
-    // Getter pour objectifs
     public function getObjectifs(): Collection
     {
         return $this->objectifs;
     }
 
-    // Ajouter un objectif
     public function addObjectifs(Objectifs $objectif): self
     {
         if (!$this->objectifs->contains($objectif)) {
@@ -206,7 +204,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    // Retirer un objectif
     public function removeObjectifs(Objectifs $objectif): self
     {
         if ($this->objectifs->removeElement($objectif)) {
@@ -219,13 +216,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    // Getter pour activites
     public function getActivites(): Collection
     {
         return $this->activites;
     }
 
-    // Ajouter une activité
     public function addActivites(Activites $activite): self
     {
         if (!$this->activites->contains($activite)) {
@@ -236,7 +231,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    // Retirer une activité
     public function removeActivites(Activites $activite): self
     {
         if ($this->activites->removeElement($activite)) {
